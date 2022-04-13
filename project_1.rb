@@ -1,22 +1,22 @@
 require "byebug"
+
 class Array
-# Array#deep_dup
 
     def deep_dup(level = 0)
-        return self.dup if self.empty?
-        debugger
+        return self.dup if self.length <= 1
+
+        final_arr = []
+
         self.each do |el|
             if el.is_a?(Array)
-                debugger
-                result = self.deep_dup(level += 1)
+                final_arr << el.deep_dup
             else
-                result << el
+                final_arr << el
             end
         end
-        debugger
+        final_arr
     end
 
-    
 end
 
 
