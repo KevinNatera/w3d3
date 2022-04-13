@@ -65,10 +65,37 @@ def bsearch(array,target)
        result = bsearch(arr.drop(mid + 1),target)
        result.nil? ?  nil :  (mid + 1) + result 
     end
-    
 end
 
+def merge_sort(array)
+    return array.dup if array.length <= 1
 
+    mid = array.length / 2
+    left_side = array.take(mid)
+    right_side = array.drop(mid)
+
+    left_sorted = merge_sort(left_side)
+    right_sorted = merge_sort(right_side)
+
+    merge(left_sorted, right_sorted)
+end
+
+def merge(left, right)
+    merged = []
+    until left.empty? || right.empty?
+        case left.first <=> right.first
+        when -1
+            merged << left.shift
+        when 0
+            merged << right.shift
+        when 1
+            merged << right.shift
+        end
+    end
+    merged + left + right
+end
+
+p merge_sort([43,26,72,6,9,3,1,1,6])
 # p bsearch([1, 2, 3], 1) # => 0
 # p bsearch([2, 3, 4, 5], 3) # => 1
 # p bsearch([2, 4, 6, 8, 10], 6) # => 2
@@ -76,3 +103,4 @@ end
 # p bsearch([1, 2, 3, 4, 5, 6], 6) # => 5
 # p bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
 # p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
+[].drop
