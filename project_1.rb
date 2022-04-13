@@ -95,7 +95,7 @@ def merge(left, right)
     merged + left + right
 end
 
-p merge_sort([43,26,72,6,9,3,1,1,6])
+# p merge_sort([43,26,72,6,9,3,1,1,6])
 # p bsearch([1, 2, 3], 1) # => 0
 # p bsearch([2, 3, 4, 5], 3) # => 1
 # p bsearch([2, 4, 6, 8, 10], 6) # => 2
@@ -103,4 +103,22 @@ p merge_sort([43,26,72,6,9,3,1,1,6])
 # p bsearch([1, 2, 3, 4, 5, 6], 6) # => 5
 # p bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
 # p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
-[].drop
+
+
+
+def subsets(array)
+    return [[]] if array.empty? 
+
+    result = subsets(array[0...-1])    
+    result + result.map {|ele| ele + [array.last] }
+end
+
+
+p subsets([]) # => [[]]
+p subsets([1]) # => [[], [1]]
+p subsets([1, 2]) # => [[], [1], [2], [1, 2]]
+p subsets([1, 2, 3])  # => [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
+
+
+
+
