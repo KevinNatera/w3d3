@@ -80,6 +80,7 @@ def merge_sort(array)
     merge(left_sorted, right_sorted)
 end
 
+
 def merge(left, right)
     merged = []
     until left.empty? || right.empty?
@@ -108,7 +109,7 @@ end
 
 def subsets(array)
     return [[]] if array.empty? 
-
+    
     result = subsets(array[0...-1])    
     result + result.map {|ele| ele + [array.last] }
 end
@@ -118,7 +119,6 @@ p subsets([]) # => [[]]
 p subsets([1]) # => [[], [1]]
 p subsets([1, 2]) # => [[], [1], [2], [1, 2]]
 p subsets([1, 2, 3])  # => [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
-
 
 
 
